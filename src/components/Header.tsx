@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
@@ -38,6 +40,12 @@ export function Header() {
             >
               Контакты
             </a>
+            <button
+              onClick={() => navigate("/wiki")}
+              className="text-sm tracking-widest uppercase text-terracotta hover:text-foreground transition-colors duration-500"
+            >
+              База знаний
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,6 +99,12 @@ export function Header() {
             >
               Контакты
             </a>
+            <button
+              onClick={() => { setIsMenuOpen(false); navigate("/wiki") }}
+              className="text-sm tracking-widest uppercase text-terracotta hover:text-foreground transition-colors text-left"
+            >
+              База знаний
+            </button>
           </div>
         </div>
       </nav>
